@@ -36,15 +36,35 @@ namespace BootCamp.Chapter
         public static int PromptInt(string message)
         {
             Console.Write(message);
-            int number = int.Parse(Console.ReadLine());
-            return number;
+
+            int number;
+            string answer = Console.ReadLine();
+            bool isNumber = int.TryParse(answer, out number);
+
+            if (isNumber == true)
+            {
+                return number;
+            }
+            else
+            {
+                Console.WriteLine($"{answer} is not a valid number.");
+                return -1;
+            }
+
         }
 
         public static string PromptString(string message)
         {
             Console.Write(message);
+
             string text = Console.ReadLine();
-            return text;
+
+            if (string.IsNullOrEmpty(text))
+            {
+                Console.WriteLine("Name cannot be empty.");
+                return "-";
+            }
+            else return text;
         }
 
         public static float PromptFloat(string message)
