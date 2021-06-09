@@ -79,7 +79,7 @@ namespace BootCamp.Chapter
             }
             else
             {
-                Console.WriteLine($"{answer} is not a valid number.");
+                Console.WriteLine("{0} is not a valid number.", answer);
                 return -1;
             }
 
@@ -102,8 +102,20 @@ namespace BootCamp.Chapter
         public static float PromptFloat(string message)
         {
             Console.Write(message);
-            float number = float.Parse(Console.ReadLine());
-            return number;
+
+            float number;
+            string answer = Console.ReadLine();
+            bool isNumber = float.TryParse(answer, out number);
+
+            if (isNumber == true)
+            {
+                return number;
+            }
+            else
+            {
+                Console.WriteLine("{0} is not a valid number.", answer);
+                return -1;
+            }
         }
     }
 }
