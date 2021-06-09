@@ -21,24 +21,25 @@ namespace BootCamp.Chapter
 
             if (height <= 0 || weight <= 0)
             {
-                if (height <= 0)
+                if (weight <= 0 && height <= 0)
+                {
+                    string error3 = $"Height cannot be equal or less than zero, but was {height}. Also, Weight cannot be equal or less than zero, but was {weight}.";
+                    Console.WriteLine($"\nFailed calculating BMI. \nReason: " + error3);
+                    return -1;
+                }
+                else if (height <= 0)
                 {
                     string error1 = $"Height cannot be equal or less than zero, but was {height}.";
-                    Console.WriteLine($"Failed calculating BMI. \nReason: " + error1);
+                    Console.WriteLine($"\nFailed calculating BMI. \nReason: " + error1);
                     return -1;
                 }
                 else if (weight <= 0)
                 {
                     string error2 = $"Weight cannot be equal or less than zero, but was {weight}.";
-                    Console.WriteLine($"Failed calculating BMI. \nReason: " + error2);
+                    Console.WriteLine($"\nFailed calculating BMI. \nReason: " + error2);
                     return -1;
                 }
-                else if (weight <= 0 && height <= 0)
-                {
-                    string error3 = $"Height cannot be equal or less than zero, but was {height}. Also, Weight cannot be equal or less than zero, but was {weight}.";
-                    Console.WriteLine($"Failed calculating BMI. \nReason: " + error3);
-                    return -1;
-                }
+
             }
             
             return bmi;
@@ -49,14 +50,14 @@ namespace BootCamp.Chapter
             string name_first = PromptString("Hello! What's your first name? ");
             string name_last = PromptString("And your last name? ");
             int age = PromptInt("What is your age in years? ");
-            height = PromptFloat("What is your heigh in meters?(eg. 1.72) ");
+            height = PromptFloat("What is your height in meters?(eg. 1.72) ");
             weight = PromptFloat("What is your weight in kg?(eg. 80.2) ");
 
             float theBMI = CalculateBMI(weight, height);
 
             if (theBMI == -1)
             {
-                Console.WriteLine("Failed calculating BMI.");
+                Console.WriteLine("Failed calculating BMI.\n");
                 return;
             }
 
